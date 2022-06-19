@@ -47,7 +47,7 @@ function ConnectButton({
 
     const wallet = new BeaconWallet({
       name: 'Taquito Boilerplate',
-      preferredNetwork: NetworkType.GRANADANET,
+      preferredNetwork: NetworkType.ITHACANET,
       disableDefaultEvents: true,
       eventHandlers: {
         [BeaconEvent.PAIR_INIT]: {
@@ -62,9 +62,7 @@ function ConnectButton({
     tzContext.toolkit.setWalletProvider(wallet as unknown as WalletProvider)
     tzContext.setToolkit(tzContext.toolkit)
     await tzContext.loadContract()
-
     console.log(tzContext.toolkit.signer, '<- is the signer')
-
     walletInfo.setWallet(wallet)
     const activeAccount = await wallet.client.getActiveAccount()
     if (activeAccount) {
