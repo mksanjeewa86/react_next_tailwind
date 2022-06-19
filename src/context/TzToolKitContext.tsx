@@ -1,6 +1,7 @@
 import React from 'react'
 import { ContractAbstraction, TezosToolkit, Wallet } from '@taquito/taquito'
 import PropTypes from 'prop-types'
+import config from '../utils/config'
 
 export type TzContext = {
   toolkit: TezosToolkit
@@ -11,7 +12,7 @@ export type TzContext = {
 }
 
 const defaultContext: TzContext = {
-  toolkit: new TezosToolkit('https://api.tez.ie/rpc/granadanet'),
+  toolkit: new TezosToolkit(config.rpcURL),
   setToolkit(tk) {
     this.toolkit = tk
   },
@@ -19,7 +20,7 @@ const defaultContext: TzContext = {
   contractStorage: null,
   async loadContract() {
     const wallet = this.toolkit.wallet
-    this.contract = await wallet.at('KT1TJMp3voDJ5WV97AA5k6RvZRjLQ3QQXTqp')
+    this.contract = await wallet.at(config.contractAddress)
     this.contractStorage = await this.contract.storage()
   },
 }
