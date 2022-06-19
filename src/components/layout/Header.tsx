@@ -1,3 +1,7 @@
 export default function Header() {
-  return <div>this is head</div>
+  return (
+    <nav className="bg-red-800 h-[50px] flex justify-center items-center text-white">
+      navbar
+    </nav>
+  )
 }
